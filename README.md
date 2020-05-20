@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# JavaScript recruitment assessment
 
-## Available Scripts
+When recruiting new developers it’s always tricky to know how good of a developer a person is.
+As a recruiter you wouldn’t hire anyone you don’t know is good, and frankly as a developer you
+probably wouldn’t want to be hired by someone that doesn't know how good you are. I mean,
+how would you get the salary you deserve?
 
-In the project directory, you can run:
+So an assessment of some form is required, and this is it. It’s probably not the first one you’ve
+done so I’ve tried to do it as fun as possible, see it as a hobby project you actually can use
+when you’re done.
 
-### `npm start`
+###
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+So here at LeoVegas we like React. Like, a lot. We hope you do too. So let’s start by creating a
+git repository and a new React project, and don’t forget to give it a cool name.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+There’s something I like more than React though it is movies. Especially good movies. But also
+bad movies. So what we’re gonna build today is an application for searching for just that,
+movies. The app must look good in desktop as well as mobile.
 
-### `npm test`
+#### Feature wise we’ll need:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- A search field and like a table for showing the result.
+- It should also have functionality for setting movies as your favourites, maybe with a star
+  symbol in the table.
+- A list where you can add movies you want to watch, like the “watch later” functionality on
+  YouTube.
+- Make Sure to test the application and write the tests in the Repo.
+- The App Must Be working on desktop as well as mobile.
+- Posters and trailers are always nice, this is however up to you.(Optional)
+- Last but definitely NOT least, please include a Demo for us to see.
 
-### `npm run build`
+#
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To get the data for movies you can use any API you want, but if I were you, I'd use the API
+provided by TMDb: https://www.themoviedb.org/documentation/api
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+When you’re done, send us the repo and sit back, relax, and be proud of your work. No doubt
+we’ll hire you after a performance like this
