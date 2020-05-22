@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import Movie from "../Movie/Movie";
+
 let movies = [];
 export default function MovieApi(props) {
   //const [movies, setMovies] = useState(null);
@@ -21,5 +23,5 @@ export default function MovieApi(props) {
   //{movies.map((movie) => movie.name).filter((movie) => movie)}
   console.log(movies);
 
-  return movies.map((movie) => movie.title);
+  return movies.map((movie) => <Movie movie={movie} />);
 }
