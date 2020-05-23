@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,10 +6,10 @@ import {
   Link,
   useRouteMatch,
   useParams,
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import SearchMovie from "./components/SearchMovie/SearchMovie";
-import Login from "./components/Login/Login";
+import SearchMovie from './components/SearchMovie/SearchMovie';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -24,6 +24,16 @@ function App() {
       </Switch>
     </Router>
   );
+
+  /*   <Router>
+  <div>
+    <Link component={RouterLink} to="/">
+      With prop forwarding
+    </Link>
+    <br />
+    <Link component={LinkBehavior}>Without prop forwarding</Link>
+  </div>
+</Router> */
 }
 
 export default App;

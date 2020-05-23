@@ -1,10 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { Badge, IconButton, Menu, MenuItem } from "@material-ui/core";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import {
+  Badge, IconButton, Menu, MenuItem,
+} from '@material-ui/core';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
-import BookmarkIcon from "@material-ui/icons/Bookmark";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 export default function Mobile(props) {
   const {
@@ -18,10 +20,10 @@ export default function Mobile(props) {
     <>
       <Menu
         anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         id={mobileMenuId}
         keepMounted
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMobileMenuOpen}
         onClose={handleMobileMenuClose}
       >

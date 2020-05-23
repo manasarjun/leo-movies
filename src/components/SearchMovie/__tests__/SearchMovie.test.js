@@ -1,10 +1,10 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-import SearchMovie from "../SearchMovie";
+import SearchMovie from '../SearchMovie';
 
-describe("SearchMovie", () => {
-  it("should render", () => {
+describe('SearchMovie', () => {
+  it('should render', () => {
     const tree = renderer.create(<SearchMovie />).toJSON();
     expect(tree).toMatchSnapshot();
   });
