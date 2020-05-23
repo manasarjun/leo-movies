@@ -1,39 +1,128 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
-  useRouteMatch,
-  useParams,
 } from 'react-router-dom';
+import {
+  AppBar, Button, IconButton, Toolbar, Typography, Menu, MenuItem,
+} from '@material-ui/core';
 
-import SearchMovie from './components/SearchMovie/SearchMovie';
-import Login from './components/Login/Login';
+import SearchIcon from '@material-ui/icons/Search';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import {
+  Favourite, WatchList, Profile, Mobile, Search, Routes,
+} from './components';
+import useStyles from './hooks/useStyles';
+
 
 function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/">
-          <SearchMovie />
-        </Route>
-      </Switch>
-    </Router>
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const menuId = 'primary-search-account-menu';
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleOnChange = (e) => {
+    const keyword = e.target.value;
+    setSearchKeyword(keyword);
+  };
+
+
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
+    </Menu>
   );
 
-  /*   <Router>
-  <div>
-    <Link component={RouterLink} to="/">
-      With prop forwarding
-    </Link>
-    <br />
-    <Link component={LinkBehavior}>Without prop forwarding</Link>
-  </div>
-</Router> */
+  return (
+    <div className={classes.grow}>
+      <Router>
+
+        <AppBar position="static">
+          <Toolbar>
+            <Link to="/">
+
+              <Typography className={classes.title} variant="h6" noWrap>
+                Leo Movies
+            </Typography>
+            </Link>
+
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <Link to='/search'>
+                <Search handleOnChange={handleOnChange} classes={classes} />
+              </Link>
+            </div>
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <Link to="/favourites">
+                <Favourite />
+              </Link>
+              <Link to="/watchlist">
+                <WatchList />
+              </Link>
+              <Link to="/login">
+                <Button color="inherit">Login</Button>
+              </Link>
+              <Link to="/register">
+                <Button color="inherit">Register</Button>
+              </Link>
+
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        <Routes searchKeyword={searchKeyword} />
+        <Mobile
+          mobileMoreAnchorEl={mobileMoreAnchorEl}
+          isMobileMenuOpen={isMobileMenuOpen}
+          handleMobileMenuClose={handleMobileMenuClose}
+        />
+        {renderMenu}
+      </Router>
+    </div>
+  );
 }
 
 export default App;

@@ -1,12 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Menu, MenuItem } from '@material-ui/core';
 
-import {
-  Badge, IconButton, Menu, MenuItem,
-} from '@material-ui/core';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import Favorite from '../Favourite/Favourite';
+import Watchlist from '../WatchList/WatchList';
+import LoginIcon from '../Login/LoginIcon';
+import RegisterIcon from '../Register/RegisterIcon';
 
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 
 export default function Mobile(props) {
   const {
@@ -28,31 +28,24 @@ export default function Mobile(props) {
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-          <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <FavoriteIcon />
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
+          <Link to="/favourites">
+            <Favorite />
+          </Link>
         </MenuItem>
         <MenuItem>
-          <IconButton aria-label="show 11 new notifications" color="inherit">
-            <Badge badgeContent={11} color="secondary">
-              <BookmarkIcon />
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
+          <Link to="/watchlist">
+            <Watchlist />
+          </Link>
         </MenuItem>
-        <MenuItem onClick={handleProfileMenuOpen}>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
-            aria-haspopup="true"
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
+        <MenuItem>
+          <Link to="/login">
+            <LoginIcon />
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/register">
+            <RegisterIcon />
+          </Link>
         </MenuItem>
       </Menu>
     </>

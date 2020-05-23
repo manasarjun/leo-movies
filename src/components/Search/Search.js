@@ -2,7 +2,7 @@ import React from 'react';
 import { InputBase } from '@material-ui/core';
 
 export default function Search(props) {
-  const { handleOnChange, classes } = props;
+  const { classes, handleOnChange } = props;
 
   return (
     <>
@@ -16,6 +16,7 @@ export default function Search(props) {
         type="text"
         onChange={handleOnChange}
       />
+
     </>
   );
 }
