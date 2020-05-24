@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
-import { setStore, getStore, removeStore } from '../../utils/store';
 import { StoreContext } from '../../provider/Provider';
 
 const useStyles = makeStyles({
@@ -24,12 +23,12 @@ const useStyles = makeStyles({
 
 
 export default function Movie(props) {
-  const { movie, isFavourite } = props;
   const classes = useStyles(props);
-  const storeData = useContext(StoreContext);
+  const { movie } = props;
+  const Store = useContext(StoreContext);
 
   const handleFavourites = (mov) => {
-    const storedFavourites = getStore('favourites');
+    const storedFavourites = Store.favourites;
     const existedList = storedFavourites.filter(s => s.id === mov.id)
     if (existedList.length === 0) {
       const favourites = {
@@ -37,9 +36,10 @@ export default function Movie(props) {
         title: mov.title,
         overview: mov.overview,
       };
-      storeData.setfavourites(favourites);
+      Store.setfavourites(favourites);
+
     } else {
-      removeStore(mov.id);
+      Store.updateFavourites(mov.id);
     }
   };
 

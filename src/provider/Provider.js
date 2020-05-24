@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { getStore, removeStore } from '../utils/store';
 
 
 const FAVOURITES = 'favourites';
@@ -8,17 +7,26 @@ let favouriteMovies = [];
 
 export const StoreContext = React.createContext({
   favourites: [],
-  storeFavourites: () => { },
+  setfavourites: () => { },
+  updateFavourites: () => { },
 });
 
 
 export default function Provider(props) {
 
-  const [favourites, setfavourites] = useState(getStore(FAVOURITES));
+
+  const getStore = () => {
+    if (window.localStorage.getItem(FAVOURITES)) {
+      favouriteMovies = JSON.parse(window.localStorage.getItem(FAVOURITES));
+    }
+    return favouriteMovies;
+  };
+
+  const [favourites, setfavourites] = useState(getStore());
 
   const setStore = (favo) => {
     if (window.localStorage.getItem(FAVOURITES)) {
-      favouriteMovies = [...JSON.parse(window.localStorage.getItem(FAVOURITES)), favo];
+      favouriteMovies = [...favourites, favo];
       window.localStorage.setItem(FAVOURITES, JSON.stringify(favouriteMovies));
     } else {
       favouriteMovies.push(favo);
@@ -28,12 +36,23 @@ export default function Provider(props) {
     return favouriteMovies;
   };
 
+  const updateStore = (movieId) => {
+    if (window.localStorage.getItem(FAVOURITES)) {
+      const updatedMovies = favourites.filter((s) => movieId !== s.id);
+      window.localStorage.setItem(FAVOURITES, JSON.stringify(updatedMovies));
+      setfavourites(updatedMovies);
+    }
+  };
+
   return (
     <StoreContext.Provider value={
       {
         favourites,
         setfavourites: (returnVal) => {
           setStore(returnVal);
+        },
+        updateFavourites: (returnVal) => {
+          updateStore(returnVal);
         },
       }
     }>
