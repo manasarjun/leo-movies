@@ -1,28 +1,30 @@
 import React, { useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import {
+  Card, CardActionArea, CardActions,
+  CardContent, CardMedia, IconButton, Typography,
+} from '@material-ui/core';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import IconButton from '@material-ui/core/IconButton';
-import { StoreContext } from '../../provider/Provider';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { StoreContext, FAVOURITES, WATCHLIST } from '../../provider/Provider';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 500,
     margin: '12px auto',
   },
-  redd: {
+  favourite: {
     color: (props) => (props.isFavourite ? 'red' : null),
+  },
+  watchlist: {
+    color: (props) => (props.isWatchList ? 'red' : null),
   },
 });
 
 
 export default function Movie(props) {
+
   const classes = useStyles(props);
   const { movie } = props;
   const Store = useContext(StoreContext);
@@ -31,25 +33,30 @@ export default function Movie(props) {
     const storedFavourites = Store.favourites;
     const existedList = storedFavourites.filter(s => s.id === mov.id)
     if (existedList.length === 0) {
-      const favourites = {
+      const favourite = {
         id: mov.id,
         title: mov.title,
         overview: mov.overview,
       };
-      Store.setfavourites(favourites);
-
+      Store.setFavourites(favourite, FAVOURITES);
     } else {
-      Store.updateFavourites(mov.id);
+      Store.updateFavourites(mov.id, FAVOURITES);
     }
   };
 
   const handleWatchList = (mov) => {
-    const watchList = {
-      id: mov.id,
-      title: mov.title,
-      overview: mov.overview,
-    };
-    // store({ watchList });
+    const storedWatchList = Store.watchList;
+    const existedList = storedWatchList.filter(s => s.id === mov.id)
+    if (existedList.length === 0) {
+      const watchList = {
+        id: mov.id,
+        title: mov.title,
+        overview: mov.overview,
+      };
+      Store.setWatchList(watchList, WATCHLIST);
+    } else {
+      Store.updateWatchList(mov.id, WATCHLIST);
+    }
   };
 
   return (
@@ -66,12 +73,12 @@ export default function Movie(props) {
             aria-label="add to favorites"
             onClick={() => handleFavourites(movie)}
           >
-            <FavoriteIcon className={classes.redd} />
+            <FavoriteIcon className={classes.favourite} />
           </IconButton>
-          <IconButton aria-label="share"
+          <IconButton
             onClick={() => handleWatchList(movie)}
           >
-            <BookmarkIcon />
+            <BookmarkIcon className={classes.watchlist} />
           </IconButton>
         </CardActions>
         <CardContent>

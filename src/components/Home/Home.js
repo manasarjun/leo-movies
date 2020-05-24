@@ -1,22 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useContext } from 'react';
+import Typography from '@material-ui/core/Typography';
+
+import apicall from '../../utils/apicall';
+import Movie from '../Movie/Movie';
+import { StoreContext } from '../../provider/Provider';
 
 export default function Home() {
   const [trending, setTrending] = useState([]);
+  const { favourites, watchList } = useContext(StoreContext);
+
 
   useEffect(() => {
     async function fetchTrending() {
-      const result = await axios('https://api.themoviedb.org/3/trending/all/day?api_key=b92e553f9d2e936c9270209ffbc64c82');
+      const result = await apicall();
       setTrending(result.data.results);
     }
     fetchTrending();
   }, []);
 
-  return (
-    <ul>
-      {trending
-        .filter((movie) => movie.title)
-        .map((t) => <li key={t.title}>{t.title}</li>)}
-    </ul>
-  );
+  const renderHome = () => {
+    return (<>
+      <Typography variant="h5" component="h2" color='inherit' >
+        Trending Movies
+      </Typography>
+      {
+        trending
+          .filter((movie) => movie.poster_path && movie.title)
+          .map((mov) => {
+            let isFavourite = false;
+            let isWatchList = false;
+
+            const checkFavourite = favourites.filter((s) => s.id === mov.id);
+            const checkWatchList = watchList.filter((s) => s.id === mov.id);
+
+            if (checkFavourite.length === 1) {
+              isFavourite = true;
+            }
+            if (checkWatchList.length === 1) {
+              isWatchList = true;
+            }
+
+            return (<Movie movie={mov} isFavourite={isFavourite} isWatchList={isWatchList} />);
+          })}
+    </>);
+  };
+
+  return renderHome();
 }
