@@ -13,6 +13,7 @@ import {
   Favourite, WatchList, Profile, Mobile, Search, Routes,
 } from './components';
 import useStyles from './hooks/useStyles';
+import Provider from './provider/Provider';
 
 
 function App() {
@@ -64,66 +65,67 @@ function App() {
   );
 
   return (
-    <div className={classes.grow}>
-      <Router>
-
-        <AppBar
-          position='static'
-          color='secondary'
-        >
-          <Toolbar className={classes.linkStyle}>
-            <Link to="/">
-              <Typography className={classes.title} variant="h4" noWrap>
-                Leo Movies
+    <Provider>
+      <div className={classes.grow}>
+        <Router>
+          <AppBar
+            position='static'
+            color='secondary'
+          >
+            <Toolbar className={classes.linkStyle}>
+              <Link to="/">
+                <Typography className={classes.title} variant="h4" noWrap>
+                  Leo Movies
             </Typography>
-            </Link>
+              </Link>
 
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <Link to='/search'>
+                  <Search handleOnChange={handleOnChange} classes={classes} />
+                </Link>
               </div>
-              <Link to='/search'>
-                <Search handleOnChange={handleOnChange} classes={classes} />
-              </Link>
-            </div>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <Link to="/favourites">
-                <Favourite />
-              </Link>
-              <Link to="/watchlist">
-                <WatchList />
-              </Link>
-              <Link to="/login">
-                <Button className={classes.textColor}>Login</Button>
-              </Link>
-              <Link to="/register">
-                <Button className={classes.textColor}>Register</Button>
-              </Link>
+              <div className={classes.grow} />
+              <div className={classes.sectionDesktop}>
+                <Link to="/favourites">
+                  <Favourite />
+                </Link>
+                <Link to="/watchlist">
+                  <WatchList />
+                </Link>
+                <Link to="/login">
+                  <Button className={classes.textColor}>Login</Button>
+                </Link>
+                <Link to="/register">
+                  <Button className={classes.textColor}>Register</Button>
+                </Link>
 
-            </div>
-            <div className={classes.sectionMobile}>
-              <IconButton
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
-            </div>
-          </Toolbar>
-        </AppBar>
-        <Routes searchKeyword={searchKeyword} />
-        <Mobile
-          mobileMoreAnchorEl={mobileMoreAnchorEl}
-          isMobileMenuOpen={isMobileMenuOpen}
-          handleMobileMenuClose={handleMobileMenuClose}
-        />
-        {renderMenu}
-      </Router>
-    </div>
+              </div>
+              <div className={classes.sectionMobile}>
+                <IconButton
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
+                  color="inherit"
+                >
+                  <MoreIcon />
+                </IconButton>
+              </div>
+            </Toolbar>
+          </AppBar>
+          <Routes searchKeyword={searchKeyword} />
+          <Mobile
+            mobileMoreAnchorEl={mobileMoreAnchorEl}
+            isMobileMenuOpen={isMobileMenuOpen}
+            handleMobileMenuClose={handleMobileMenuClose}
+          />
+          {renderMenu}
+        </Router>
+      </div>
+    </Provider>
   );
 }
 

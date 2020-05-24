@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -10,6 +10,7 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
 import { setStore, getStore, removeStore } from '../../utils/store';
+import { StoreContext } from '../../provider/Provider';
 
 const useStyles = makeStyles({
   root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles({
 export default function Movie(props) {
   const { movie, isFavourite } = props;
   const classes = useStyles(props);
+  const storeData = useContext(StoreContext);
 
   const handleFavourites = (mov) => {
     const storedFavourites = getStore('favourites');
@@ -35,7 +37,7 @@ export default function Movie(props) {
         title: mov.title,
         overview: mov.overview,
       };
-      setStore(favourites);
+      storeData.setfavourites(favourites);
     } else {
       removeStore(mov.id);
     }

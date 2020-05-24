@@ -1,19 +1,46 @@
-import React from 'react';
-import { getStore } from '../../utils/store';
+import React, { useContext } from 'react';
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { StoreContext } from '../../provider/Provider';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 500,
+    margin: '12px auto',
+  },
+
+});
+
 
 const DisplayFavourite = () => {
+  const classes = useStyles();
+  const { favourites } = useContext(StoreContext);
+
   const renderFavourites = () => {
-    const movies = getStore('favourites');
-    if (!movies) {
-      return <p>No favourites yet !</p>;
+    if (favourites.length === 0) {
+      return <Card className={classes.root}> <CardContent>No favourites yet ! </CardContent ></Card >;
     }
     return (
       <>
-        {getStore('favourites').map((m) => (
-          <p>
-            {m.title} {m.overview}
-          </p>
-        ))}
+        <Card className={classes.root}>
+
+          {favourites.map((movie) => (
+            <CardContent>
+
+              <Typography variant="h5" component="h2">
+                {movie.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {movie.overview}
+              </Typography>
+            </CardContent>
+
+          ))}
+        </Card>
+
       </>
     );
   };
