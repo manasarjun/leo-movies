@@ -9,26 +9,36 @@ import Typography from '@material-ui/core/Typography';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
-import { setStore } from '../../utils/store';
+import { setStore, getStore, removeStore } from '../../utils/store';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 500,
     margin: '12px auto',
   },
+  redd: {
+    color: (props) => (props.isFavourite ? 'red' : null),
+  },
 });
 
 
-export default function Movie({ movie }) {
-  const classes = useStyles();
+export default function Movie(props) {
+  const { movie, isFavourite } = props;
+  const classes = useStyles(props);
 
   const handleFavourites = (mov) => {
-    const favourites = {
-      id: mov.id,
-      title: mov.title,
-      overview: mov.overview,
-    };
-    setStore(favourites);
+    const storedFavourites = getStore('favourites');
+    const existedList = storedFavourites.filter(s => s.id === mov.id)
+    if (existedList.length === 0) {
+      const favourites = {
+        id: mov.id,
+        title: mov.title,
+        overview: mov.overview,
+      };
+      setStore(favourites);
+    } else {
+      removeStore(mov.id);
+    }
   };
 
   const handleWatchList = (mov) => {
@@ -54,7 +64,7 @@ export default function Movie({ movie }) {
             aria-label="add to favorites"
             onClick={() => handleFavourites(movie)}
           >
-            <FavoriteIcon />
+            <FavoriteIcon className={classes.redd} />
           </IconButton>
           <IconButton aria-label="share"
             onClick={() => handleWatchList(movie)}

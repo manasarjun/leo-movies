@@ -15,11 +15,16 @@ export function setStore(favourites) {
 
 export function getStore(favourites) {
   let getFavourites = [];
-
-  if (favourites === 'favourites') {
+  if (favourites === 'favourites' && window.localStorage.getItem('favourites')) {
     getFavourites = JSON.parse(window.localStorage.getItem(favourites));
-    // JSON.parse(getFavourites);
   }
-
   return getFavourites;
 }
+
+export function removeStore(movieId) {
+  if (window.localStorage.getItem('favourites')) {
+    favouriteMovies = JSON.parse(window.localStorage.getItem('favourites'));
+    const updatedMovies = favouriteMovies.filter((s) => movieId !== s.id);
+    window.localStorage.setItem('favourites', JSON.stringify(updatedMovies));
+  }
+};
