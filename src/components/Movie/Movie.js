@@ -9,36 +9,45 @@ import Typography from '@material-ui/core/Typography';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
+import { setStore } from '../../utils/store';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 500,
+    margin: '12px auto',
   },
 });
 
-const favouriteMovies = [];
+
 export default function Movie({ movie }) {
   const classes = useStyles();
 
   const handleFavourites = (mov) => {
-    const fav = {
+    const favourites = {
       id: mov.id,
       title: mov.title,
       overview: mov.overview,
     };
-    favouriteMovies.push(fav);
-    window.localStorage.setItem('favourites', JSON.stringify(favouriteMovies));
+    setStore(favourites);
+  };
+
+  const handleWatchList = (mov) => {
+    const watchList = {
+      id: mov.id,
+      title: mov.title,
+      overview: mov.overview,
+    };
+    // store({ watchList });
   };
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
+          className={classes.sectionDesktop}
           component="img"
-          alt="Contemplative Reptile"
           height="300"
           image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          title="Contemplative Reptile"
         />
         <CardActions>
           <IconButton
@@ -47,15 +56,16 @@ export default function Movie({ movie }) {
           >
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton aria-label="share"
+            onClick={() => handleWatchList(movie)}
+          >
             <BookmarkIcon />
           </IconButton>
         </CardActions>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography variant="h5" component="h2">
             {movie.title}
           </Typography>
-
           <Typography variant="body2" color="textSecondary" component="p">
             {movie.overview}
           </Typography>

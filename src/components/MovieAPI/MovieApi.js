@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Movie from '../Movie/Movie';
+import apiCall from '../../utils/apicall';
 
 let movies = [];
 
 export default function MovieApi(props) {
-  // const [movies, setMovies] = useState(null);
+  //const [movies, setMovies] = useState(null);
   const { searchKeyword } = props;
   useEffect(() => {
     async function fetchMovies(searchKey) {
@@ -18,10 +19,10 @@ export default function MovieApi(props) {
       );
       movies = result.data.results;
     }
+    console.log('movies', movies)
     fetchMovies(searchKeyword);
   });
-  // {movies.map((movie) => movie.name).filter((movie) => movie)}
-  console.log(movies);
 
-  return movies.map((movie) => <Movie movie={movie} />);
+  return movies.filter((movie) => movie.poster_path)
+    .map((mov) => (<Movie movie={mov} />));
 }

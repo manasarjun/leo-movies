@@ -67,11 +67,13 @@ function App() {
     <div className={classes.grow}>
       <Router>
 
-        <AppBar position="static">
-          <Toolbar>
+        <AppBar
+          position='static'
+          color='secondary'
+        >
+          <Toolbar className={classes.linkStyle}>
             <Link to="/">
-
-              <Typography className={classes.title} variant="h6" noWrap>
+              <Typography className={classes.title} variant="h4" noWrap>
                 Leo Movies
             </Typography>
             </Link>
@@ -93,10 +95,10 @@ function App() {
                 <WatchList />
               </Link>
               <Link to="/login">
-                <Button color="inherit">Login</Button>
+                <Button className={classes.textColor}>Login</Button>
               </Link>
               <Link to="/register">
-                <Button color="inherit">Register</Button>
+                <Button className={classes.textColor}>Register</Button>
               </Link>
 
             </div>
