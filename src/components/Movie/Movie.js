@@ -102,9 +102,9 @@ export default function Movie(props) {
 
 Movie.propTypes = {
   movie: PropTypes.shape({}).isRequired,
-  isFavouriteItem: PropTypes.bool.isRequired,
-  isWatchItem: PropTypes.bool.isRequired,
-  isTrending: PropTypes.bool.isRequired,
+  isFavouriteItem: PropTypes.bool,
+  isWatchItem: PropTypes.bool,
+  isTrending: PropTypes.bool,
   isFavourite: PropTypes.bool,
   isWatchList: PropTypes.bool,
 };
