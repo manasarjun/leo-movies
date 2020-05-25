@@ -4,7 +4,7 @@ import {
   Link,
 } from 'react-router-dom';
 import {
-  AppBar, Button, IconButton, Toolbar, Typography, Menu, MenuItem,
+  AppBar, IconButton, Toolbar, Typography, Menu,
 } from '@material-ui/core';
 
 import SearchIcon from '@material-ui/icons/Search';

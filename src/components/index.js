@@ -1,4 +1,3 @@
-export { default as Login } from './Login/Login';
 export { default as Favourite } from './Favourite/Favourite';
 export { default as DisplayFavourite } from './Favourite/DisplayFavourite';
 export { default as Mobile } from './Mobile/Mobile';
