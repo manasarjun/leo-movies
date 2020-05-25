@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import MovieApi from '../MovieApi';
+import MovieFilter from '../MovieFilter';
 
-describe('MovieAPI', () => {
+describe('MovieFilter', () => {
   it('should render', () => {
-    const tree = renderer.create(<MovieApi />).toJSON();
+    const tree = renderer.create(<MovieFilter />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

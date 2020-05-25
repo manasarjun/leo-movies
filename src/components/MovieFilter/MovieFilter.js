@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Card, CardContent } from '@material-ui/core';
 
 import Movie from '../Movie/Movie';
 import apiCall from '../../utils/apicall';
 import { StoreContext } from '../../provider/Provider';
+import useStyles from '../../hooks/useStyles';
 
-export default function MovieApi(props) {
+export default function MovieFilter(props) {
   const { favourites, watchList } = useContext(StoreContext);
   const [movies, setMovies] = useState([]);
   const { searchKeyword } = props;
+  const classes = useStyles();
 
   useEffect(() => {
     if (searchKeyword.length >= 1) {
@@ -20,8 +23,12 @@ export default function MovieApi(props) {
     }
   }, [searchKeyword]);
 
-  return (
-    movies.filter((movie) => movie.poster_path && movie.title)
+  const renderMovies = () => {
+    if (searchKeyword.length === 0) {
+      return <Card className={classes.root}> <CardContent> Search Your Movies ! </CardContent ></Card >;
+    }
+
+    return movies.filter((movie) => movie.poster_path && movie.title)
       .map((mov) => {
         let isFavourite = false;
         let isWatchList = false;
@@ -41,6 +48,7 @@ export default function MovieApi(props) {
             movie={mov}
             isFavourite={isFavourite}
             isWatchList={isWatchList} />);
-      })
-  );
+      });
+  };
+  return renderMovies();
 }

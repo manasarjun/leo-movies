@@ -84,6 +84,11 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
     },
   },
+  alighHeading: {
+    textAlign: 'center',
+    marginTop: 16,
+    color: 'white',
+  },
 }));
 
 export default useStyles;

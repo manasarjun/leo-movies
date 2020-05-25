@@ -4,11 +4,12 @@ import Typography from '@material-ui/core/Typography';
 import apicall from '../../utils/apicall';
 import Movie from '../Movie/Movie';
 import { StoreContext } from '../../provider/Provider';
+import useStyles from '../../hooks/useStyles';
 
 export default function Home() {
   const [trending, setTrending] = useState([]);
   const { favourites, watchList } = useContext(StoreContext);
-
+  const classes = useStyles();
 
   useEffect(() => {
     async function fetchTrending() {
@@ -20,7 +21,7 @@ export default function Home() {
 
   const renderHome = () => {
     return (<>
-      <Typography variant="h5" component="h2" color='inherit' >
+      <Typography variant="h5" component="h2" color='inherit' className={classes.alighHeading} >
         Trending Movies
       </Typography>
       {

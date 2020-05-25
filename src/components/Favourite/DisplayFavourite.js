@@ -1,13 +1,9 @@
 import React, { useContext } from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import { Card, CardContent } from '@material-ui/core';
 
 import { StoreContext } from '../../provider/Provider';
-import useStyles from "../../hooks/useStyles";
-import Movie from "../Movie/Movie";
-
-
-
+import useStyles from '../../hooks/useStyles';
+import Movie from '../Movie/Movie';
 
 const DisplayFavourite = () => {
   const classes = useStyles();
@@ -15,7 +11,9 @@ const DisplayFavourite = () => {
 
   const renderFavourites = () => {
     if (favourites.length === 0) {
-      return <Card className={classes.root}> <CardContent>No favourites yet ! </CardContent ></Card >;
+      return (<Card className={classes.root}>
+        <CardContent>No favourites yet ! </CardContent >
+      </Card >);
     }
     return (
       <>
