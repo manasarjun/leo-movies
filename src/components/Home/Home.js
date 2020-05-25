@@ -40,7 +40,7 @@ export default function Home() {
               isWatchList = true;
             }
 
-            return (<Movie movie={mov} isFavourite={isFavourite} isWatchList={isWatchList} />);
+            return (<Movie key={mov.id} movie={mov} isFavourite={isFavourite} isWatchList={isWatchList} />);
           })}
     </>);
   };

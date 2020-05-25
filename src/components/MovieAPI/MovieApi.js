@@ -20,8 +20,6 @@ export default function MovieApi(props) {
     }
   }, [searchKeyword]);
 
-
-
   return (
     movies.filter((movie) => movie.poster_path && movie.title)
       .map((mov) => {
@@ -37,7 +35,12 @@ export default function MovieApi(props) {
         if (checkWatchList.length === 1) {
           isWatchList = true;
         }
-        return (<Movie movie={mov} isFavourite={isFavourite} isWatchList={isWatchList} />);
+        return (
+          <Movie
+            key={mov.id}
+            movie={mov}
+            isFavourite={isFavourite}
+            isWatchList={isWatchList} />);
       })
   );
 }
