@@ -1,18 +1,25 @@
-import React from 'react';
-import { getStore } from '../../utils/store';
+import React, { useContext } from 'react';
+import { Card, CardContent } from '@material-ui/core';
+
+import { StoreContext } from '../../provider/Provider';
+import useStyles from '../../hooks/useStyles';
+import Movie from '../Movie/Movie';
 
 const DisplayFavourite = () => {
+  const classes = useStyles();
+  const { favourites } = useContext(StoreContext);
+
   const renderFavourites = () => {
-    const movies = getStore('favourites');
-    if (!movies) {
-      return <p>No favourites yet !</p>;
+    if (favourites.length === 0) {
+      return (<Card className={classes.root}>
+        <CardContent>No favourites yet ! </CardContent >
+      </Card >);
     }
     return (
       <>
-        {getStore('favourites').map((m) => (
-          <p>
-            {m.title} {m.overview}
-          </p>
+        {favourites.map((movie) => (
+          <Movie key={movie.id} isFavouriteItem={true} movie={movie} />
+
         ))}
       </>
     );

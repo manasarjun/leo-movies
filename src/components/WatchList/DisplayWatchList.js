@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
+
+import { StoreContext } from '../../provider/Provider';
+import useStyles from "../../hooks/useStyles";
+import Movie from '../Movie/Movie';
 
 const DisplayWatchList = (props) => {
-    const getWatchList = window.localStorage.getItem('watchlist');
-    const watchList = JSON.parse(getWatchList);
-    console.log('local.......', props, watchList);
+  const classes = useStyles();
 
-    return (
-        <>
-            {watchList.map((m) => (
-                <p>
-                    {m.title} {m.overview}
-                </p>
-            ))}
-        </>
-    );
+  const { watchList } = useContext(StoreContext);
+  if (watchList.length === 0) {
+    return <Card className={classes.root}> <CardContent>No WatchList Movies yet !  </CardContent ></Card >;
+  }
+  return (
+    <>
+      {watchList.map((movie) => (
+        <Movie key={movie.id} isWatchItem={true} movie={movie} />
+
+      ))}
+    </>
+  );
 };
 export default DisplayWatchList;

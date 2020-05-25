@@ -4,20 +4,15 @@ import {
   Route,
 } from 'react-router-dom';
 
-import MovieApi from '../MovieAPI/MovieApi';
-import Login from '../Login/Login';
-import Register from '../Register/Register';
 import DisplayFavourite from '../Favourite/DisplayFavourite';
 import DisplayWatchList from '../WatchList/DisplayWatchList';
 import Home from '../Home/Home';
+import MovieFilter from '../MovieFilter/MovieFilter';
 
 export default function Routes(props) {
   return (<Switch>
     <Route path="/" exact>
       <Home />
-    </Route>
-    <Route path="/login">
-      <Login />
     </Route>
     <Route path="/favourites">
       <DisplayFavourite />
@@ -26,10 +21,7 @@ export default function Routes(props) {
       <DisplayWatchList />
     </Route>
     <Route path="/search">
-      <MovieApi searchKeyword={props.searchKeyword} />
-    </Route>
-    <Route path="/register">
-      <Register />
+      <MovieFilter searchKeyword={props.searchKeyword} />
     </Route>
   </Switch>);
 }

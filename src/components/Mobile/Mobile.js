@@ -4,9 +4,6 @@ import { Menu, MenuItem } from '@material-ui/core';
 
 import Favorite from '../Favourite/Favourite';
 import Watchlist from '../WatchList/WatchList';
-import LoginIcon from '../Login/LoginIcon';
-import RegisterIcon from '../Register/RegisterIcon';
-
 
 export default function Mobile(props) {
   const {
@@ -14,7 +11,6 @@ export default function Mobile(props) {
     mobileMenuId,
     isMobileMenuOpen,
     handleMobileMenuClose,
-    handleProfileMenuOpen,
   } = props;
   return (
     <>
@@ -35,16 +31,6 @@ export default function Mobile(props) {
         <MenuItem>
           <Link to="/watchlist">
             <Watchlist />
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link to="/login">
-            <LoginIcon />
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link to="/register">
-            <RegisterIcon />
           </Link>
         </MenuItem>
       </Menu>

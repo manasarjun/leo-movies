@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieFilter should dispaly message 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
+>
+   
+  <div
+    className="MuiCardContent-root"
+  >
+     Search Your Movies ! 
+  </div>
+</div>
+`;
+
+exports[`MovieFilter should render Movie 1`] = `null`;
