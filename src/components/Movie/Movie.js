@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import {
   Card, CardActions,
   CardContent, CardMedia, IconButton, Typography,
@@ -98,3 +99,12 @@ export default function Movie(props) {
     </Card>
   );
 }
+
+Movie.propTypes = {
+  movie: PropTypes.shape({}).isRequired,
+  isFavouriteItem: PropTypes.bool,
+  isWatchItem: PropTypes.bool,
+  isTrending: PropTypes.bool,
+  isFavourite: PropTypes.bool,
+  isWatchList: PropTypes.bool,
+};

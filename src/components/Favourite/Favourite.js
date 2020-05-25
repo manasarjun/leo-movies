@@ -3,11 +3,9 @@ import React, { useContext } from 'react';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
-import useStyles from '../../hooks/useStyles';
 import { StoreContext } from '../../provider/Provider';
 
 export default function Favourite() {
-  const classes = useStyles();
   const { favourites } = useContext(StoreContext);
 
   return (

@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 
 import { StoreContext } from '../../provider/Provider';
-import useStyles from "../../hooks/useStyles";
+import useStyles from '../../hooks/useStyles';
 import Movie from '../Movie/Movie';
 
-const DisplayWatchList = (props) => {
+const DisplayWatchList = () => {
   const classes = useStyles();
 
   const { watchList } = useContext(StoreContext);
@@ -23,4 +22,5 @@ const DisplayWatchList = (props) => {
     </>
   );
 };
+
 export default DisplayWatchList;
