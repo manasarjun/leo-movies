@@ -56,8 +56,6 @@ function App() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
     </Menu>
   );
 
@@ -102,13 +100,6 @@ function App() {
                 <Link to="/watchlist">
                   <WatchList />
                 </Link>
-                <Link to="/login">
-                  <Button className={classes.textColor}>Login</Button>
-                </Link>
-                <Link to="/register">
-                  <Button className={classes.textColor}>Register</Button>
-                </Link>
-
               </div>
               <div className={classes.sectionMobile}>
                 <IconButton
