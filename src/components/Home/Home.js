@@ -39,7 +39,7 @@ export default function Home() {
             if (checkWatchList.length === 1) {
               isWatchList = true;
             }
-            return (<Movie key={mov.id} movie={mov} isFavourite={isFavourite} isWatchList={isWatchList} />);
+            return (<Movie key={mov.id} movie={mov} isFavourite={isFavourite} isWatchList={isWatchList} isTrending={true} />);
           })}
     </>);
   };

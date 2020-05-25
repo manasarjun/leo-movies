@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
+
     },
   },
   search: {

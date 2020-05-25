@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 
 import { StoreContext } from '../../provider/Provider';
 import useStyles from "../../hooks/useStyles";
+import Movie from "../Movie/Movie";
 
 
 
@@ -19,21 +19,10 @@ const DisplayFavourite = () => {
     }
     return (
       <>
-        <Card className={classes.root}>
+        {favourites.map((movie) => (
+          <Movie key={movie.id} isFavouriteItem={true} movie={movie} />
 
-          {favourites.map((movie) => (
-            <CardContent key={movie.id}>
-              <Typography variant="h5" component="h2">
-                {movie.title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {movie.overview}
-              </Typography>
-            </CardContent>
-
-          ))}
-        </Card>
-
+        ))}
       </>
     );
   };

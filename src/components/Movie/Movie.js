@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 export default function Movie(props) {
 
   const classes = useStyles(props);
-  const { movie } = props;
+  const { movie, isFavouriteItem, isWatchItem, isTrending } = props;
   const Store = useContext(StoreContext);
 
   const handleFavourites = (mov) => {
@@ -61,29 +61,36 @@ export default function Movie(props) {
 
   return (
     <Card className={classes.root}>
-      <CardMedia
+      {!isWatchItem && !isFavouriteItem ? <CardMedia
         className={classes.sectionDesktop}
         component="img"
         height="300"
         image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-      />
+      /> : null}
       <CardActions>
         <IconButton
           aria-label="add to favorites"
           onClick={() => handleFavourites(movie)}
         >
-          <FavoriteIcon className={classes.favourite} />
+          {!isWatchItem ? <FavoriteIcon className={classes.favourite} /> : null}
         </IconButton>
         <IconButton
           onClick={() => handleWatchList(movie)}
         >
-          <BookmarkIcon className={classes.watchlist} />
+          {!isFavouriteItem ? <BookmarkIcon className={classes.watchlist} /> : null}
         </IconButton>
+        <> {isTrending ?
+          <Typography variant="body2" color="textSecondary" component="p">
+            <p>Votes: {movie.vote_count}    Rating: {movie.vote_average}</p>
+          </Typography> : null}</>
       </CardActions>
       <CardContent>
+
         <Typography variant="h5" component="h2">
           {movie.title}
+
         </Typography>
+
         <Typography variant="body2" color="textSecondary" component="p">
           {movie.overview}
         </Typography>
