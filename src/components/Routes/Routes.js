@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Switch,
   Route,
@@ -25,3 +26,7 @@ export default function Routes(props) {
     </Route>
   </Switch>);
 }
+
+Routes.propTypes = {
+  searchKeyword: PropTypes.string,
+};

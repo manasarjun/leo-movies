@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { InputBase } from '@material-ui/core';
 
 export default function Search(props) {
@@ -20,3 +21,8 @@ export default function Search(props) {
     </>
   );
 }
+
+Search.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  handleOnChange: PropTypes.func.isRequired,
+};

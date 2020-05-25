@@ -81,7 +81,7 @@ function App() {
               </div>
               <Link to="/">
                 <Typography className={classes.title} variant="h4" noWrap>
-                  Leo Movies
+                  LeoMovies
               </Typography>
               </Link>
               <div className={classes.search}>
