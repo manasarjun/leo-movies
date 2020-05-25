@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     margin: '12px auto',
     [theme.breakpoints.up('md')]: {
-      width: (props) => !props.isFavouriteItem && !props.isWatchItem ? '14%' : '500px',
+      width: (props) => !props.isFavouriteItem && !props.isWatchItem ? '15%' : '500px',
       float: (props) => !props.isFavouriteItem && !props.isWatchItem ? 'left' : null,
       height: (props) => !props.isFavouriteItem && !props.isWatchItem ? 450 : null,
       margin: (props) => !props.isFavouriteItem && !props.isWatchItem ? 8 : '12px auto',
