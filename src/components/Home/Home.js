@@ -19,8 +19,7 @@ export default function Home() {
     fetchTrending();
   }, []);
 
-  const renderHome = () => {
-    return (<>
+  const renderHome = () => (<>
       <Typography variant="h5" component="h2" color='inherit' className={classes.alighHeading} >
         Trending Movies
       </Typography>
@@ -43,7 +42,6 @@ export default function Home() {
             return (<Movie key={mov.id} movie={mov} isFavourite={isFavourite} isWatchList={isWatchList} isTrending={true} />);
           })}
     </>);
-  };
 
   return renderHome();
 }

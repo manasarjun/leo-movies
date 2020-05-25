@@ -32,7 +32,6 @@ export const StoreContext = React.createContext({
 
 
 export default function Provider(props) {
-
   const getStore = (storeKey) => {
     if (storeKey === FAVOURITES) {
       if (window.localStorage.getItem(storeKey)) {

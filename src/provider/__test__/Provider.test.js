@@ -5,8 +5,8 @@ import Provider from '../Provider';
 
 
 describe('Provider', () => {
-    it('should render', () => {
-        const tree = renderer.create(<Provider />).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+  it('should render', () => {
+    const tree = renderer.create(<Provider />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
