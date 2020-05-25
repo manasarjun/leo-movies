@@ -9,6 +9,7 @@ import {
 
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import HomeIcon from '@material-ui/icons/Home';
 import {
   Favourite, WatchList, Mobile, Search, Routes,
 } from './components';
@@ -65,16 +66,26 @@ function App() {
       <div className={classes.grow}>
         <Router>
           <AppBar
-            position='static'
+            position='sticky'
             color='secondary'
+
           >
             <Toolbar className={classes.linkStyle}>
+              <div className={classes.sectionMobile}>
+                <IconButton
+                  edge="start"
+                  className={classes.menuButton}
+                  color="inherit"
+                  aria-label="open drawer"
+                >
+                  <Link to="/" className={classes.textColor}><HomeIcon /></Link>
+                </IconButton>
+              </div>
               <Link to="/">
                 <Typography className={classes.title} variant="h4" noWrap>
                   Leo Movies
-            </Typography>
+              </Typography>
               </Link>
-
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
@@ -121,7 +132,7 @@ function App() {
           {renderMenu}
         </Router>
       </div>
-    </Provider>
+    </Provider >
   );
 }
 

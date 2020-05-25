@@ -2,17 +2,11 @@ import React, { useContext } from 'react';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { StoreContext } from '../../provider/Provider';
+import useStyles from "../../hooks/useStyles";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 500,
-    margin: '12px auto',
-  },
 
-});
 
 
 const DisplayFavourite = () => {
@@ -28,8 +22,7 @@ const DisplayFavourite = () => {
         <Card className={classes.root}>
 
           {favourites.map((movie) => (
-            <CardContent>
-
+            <CardContent key={movie.id}>
               <Typography variant="h5" component="h2">
                 {movie.title}
               </Typography>

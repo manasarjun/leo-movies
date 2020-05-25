@@ -1,6 +1,10 @@
 import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 500,
+    margin: '12px auto',
+  },
   grow: {
     flexGrow: 1,
 
@@ -77,8 +81,8 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     '& a': {
       textDecoration: 'none',
-    }
-  }
+    },
+  },
 }));
 
 export default useStyles;

@@ -12,7 +12,6 @@ export default function Favourite() {
 
   return (
     <IconButton
-      className={classes.textColor}
     >
       <Badge badgeContent={String(favourites.length)} color="secondary" >
         <FavoriteIcon />
