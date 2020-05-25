@@ -4,7 +4,6 @@ import renderer from 'react-test-renderer';
 import Movie from '../Movie';
 
 describe('Movie', () => {
-
   const movie = {
     id: 123,
     title: 'avengers',

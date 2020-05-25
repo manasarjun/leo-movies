@@ -6,33 +6,21 @@ import {
 } from '@material-ui/core';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { makeStyles } from '@material-ui/core/styles';
 
+import useStyles from '../../hooks/useStyles';
 import { StoreContext, FAVOURITES, WATCHLIST } from '../../provider/Provider';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 500,
-    margin: '12px auto',
-  },
-  favourite: {
-    color: (props) => (props.isFavourite ? 'red' : null),
-  },
-  watchlist: {
-    color: (props) => (props.isWatchList ? 'red' : null),
-  },
-});
-
-
 export default function Movie(props) {
-
   const classes = useStyles(props);
-  const { movie, isFavouriteItem, isWatchItem, isTrending } = props;
+  const {
+    movie, isFavouriteItem,
+    isWatchItem,
+  } = props;
   const Store = useContext(StoreContext);
 
   const handleFavourites = (mov) => {
     const storedFavourites = Store.favourites;
-    const existedList = storedFavourites.filter(s => s.id === mov.id)
+    const existedList = storedFavourites.filter((s) => s.id === mov.id);
     if (existedList.length === 0) {
       const favourite = {
         id: mov.id,
@@ -47,7 +35,7 @@ export default function Movie(props) {
 
   const handleWatchList = (mov) => {
     const storedWatchList = Store.watchList;
-    const existedList = storedWatchList.filter(s => s.id === mov.id)
+    const existedList = storedWatchList.filter((s) => s.id === mov.id);
     if (existedList.length === 0) {
       const watchList = {
         id: mov.id,
@@ -61,13 +49,14 @@ export default function Movie(props) {
   };
 
   return (
-    <Card className={classes.root}>
-      {!isWatchItem && !isFavouriteItem ? <CardMedia
-        className={classes.sectionDesktop}
-        component="img"
-        height="300"
-        image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-      /> : null}
+    <Card className={classes.cardWidth}>
+      {!isWatchItem && !isFavouriteItem
+        ? <CardMedia
+          className={classes.imageCard}
+          component="img"
+          height='300'
+          image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        /> : null}
       <CardActions>
         <IconButton
           aria-label="add to favorites"
@@ -80,21 +69,19 @@ export default function Movie(props) {
         >
           {!isFavouriteItem ? <BookmarkIcon className={classes.watchlist} /> : null}
         </IconButton>
-        <> {isTrending ?
-          <Typography variant="body2" color="textSecondary" component="p">
-            <>Votes: {movie.vote_count} &nbsp;&nbsp; Rating: {movie.vote_average}</>
-          </Typography> : null}</>
       </CardActions>
+      <> {!props.isFavouriteItem && !props.isWatchItem
+        ? <Typography variant="body2" color="textSecondary" component="p">
+          <>&nbsp;&nbsp;Votes: {movie.vote_count} &nbsp; Rating: {movie.vote_average}</>
+        </Typography> : null}
+      </>
       <CardContent>
-
-        <Typography variant="h5" component="h2">
+        <Typography >
           {movie.title}
-
         </Typography>
-
-        <Typography variant="body2" color="textSecondary" component="p">
+        {(isFavouriteItem || isWatchItem) ? <Typography variant="body2" color="textSecondary" component="p">
           {movie.overview}
-        </Typography>
+        </Typography> : null}
       </CardContent>
     </Card>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable no-confusing-arrow */
 import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,8 +51,6 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     color: 'white',
-
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -88,6 +87,24 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     marginTop: 16,
     color: 'white',
+  },
+  favourite: {
+    color: (props) => (props.isFavourite ? 'red' : null),
+  },
+  watchlist: {
+    color: (props) => (props.isWatchList ? 'red' : null),
+  },
+  cardWidth: {
+    width: '100%',
+    margin: '12px auto',
+    [theme.breakpoints.up('md')]: {
+      width: (props) => !props.isFavouriteItem && !props.isWatchItem ? '15%' : '500px',
+      float: (props) => !props.isFavouriteItem && !props.isWatchItem ? 'left' : null,
+      height: (props) => !props.isFavouriteItem && !props.isWatchItem ? 450 : null,
+      margin: (props) => !props.isFavouriteItem && !props.isWatchItem ? 8 : '12px auto',
+      padding: (props) => !props.isFavouriteItem && !props.isWatchItem ? 2 : null,
+      overflow: (props) => !props.isFavouriteItem && !props.isWatchItem ? 'scroll' : 'auto',
+    },
   },
 }));
 
