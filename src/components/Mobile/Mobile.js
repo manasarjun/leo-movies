@@ -7,14 +7,12 @@ import Watchlist from '../WatchList/WatchList';
 import LoginIcon from '../Login/LoginIcon';
 import RegisterIcon from '../Register/RegisterIcon';
 
-
 export default function Mobile(props) {
   const {
     mobileMoreAnchorEl,
     mobileMenuId,
     isMobileMenuOpen,
     handleMobileMenuClose,
-    handleProfileMenuOpen,
   } = props;
   return (
     <>

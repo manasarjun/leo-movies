@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  Card, CardActionArea, CardActions,
+  Card, CardActions,
   CardContent, CardMedia, IconButton, Typography,
 } from '@material-ui/core';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
@@ -61,35 +61,33 @@ export default function Movie(props) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.sectionDesktop}
-          component="img"
-          height="300"
-          image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        />
-        <CardActions>
-          <IconButton
-            aria-label="add to favorites"
-            onClick={() => handleFavourites(movie)}
-          >
-            <FavoriteIcon className={classes.favourite} />
-          </IconButton>
-          <IconButton
-            onClick={() => handleWatchList(movie)}
-          >
-            <BookmarkIcon className={classes.watchlist} />
-          </IconButton>
-        </CardActions>
-        <CardContent>
-          <Typography variant="h5" component="h2">
-            {movie.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {movie.overview}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <CardMedia
+        className={classes.sectionDesktop}
+        component="img"
+        height="300"
+        image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+      />
+      <CardActions>
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => handleFavourites(movie)}
+        >
+          <FavoriteIcon className={classes.favourite} />
+        </IconButton>
+        <IconButton
+          onClick={() => handleWatchList(movie)}
+        >
+          <BookmarkIcon className={classes.watchlist} />
+        </IconButton>
+      </CardActions>
+      <CardContent>
+        <Typography variant="h5" component="h2">
+          {movie.title}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {movie.overview}
+        </Typography>
+      </CardContent>
     </Card>
   );
 }

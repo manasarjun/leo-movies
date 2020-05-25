@@ -10,7 +10,7 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {
-  Favourite, WatchList, Profile, Mobile, Search, Routes,
+  Favourite, WatchList, Mobile, Search, Routes,
 } from './components';
 import useStyles from './hooks/useStyles';
 import Provider from './provider/Provider';
@@ -26,10 +26,6 @@ function App() {
 
   const menuId = 'primary-search-account-menu';
   const mobileMenuId = 'primary-search-account-menu-mobile';
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
