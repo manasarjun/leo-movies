@@ -81,7 +81,7 @@ export default function Movie(props) {
         </IconButton>
         <> {isTrending ?
           <Typography variant="body2" color="textSecondary" component="p">
-            <p>Votes: {movie.vote_count} &nbsp;&nbsp; Rating: {movie.vote_average}</p>
+            <>Votes: {movie.vote_count} &nbsp;&nbsp; Rating: {movie.vote_average}</>
           </Typography> : null}</>
       </CardActions>
       <CardContent>
