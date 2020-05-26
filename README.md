@@ -8,22 +8,14 @@ LeoMovies is an app where you can search movies, mark your favourite movies from
 - You can check Favorite and watch list from App bar icons.
 - You can also remove your list items in list also.
 
-### Demo
+### Preview
 
-- Mobile Home display
-![Marking image](./demoimages/mobileView.png)
+- Desktop Search view
+![Desktop View](./demoimages/desktop_view.png)
 
-- Marking your Favourites and WatchList
-![Marking image](./demoimages/marking.png)
+- Mobile Search view
+![Mobile View](./demoimages/mobile_view.png)
 
-- Search Results 
-![Marking image](./demoimages/search.png)
-
-- WatchList page display message if zero items
-![Marking image](./demoimages/watchListMessage.png)
-
-- Your favourite movie list
-![Favourite List](./demoimages/favouriteList.png)
 
 ### For Developers
 
